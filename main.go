@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"os/exec"
 	"math/rand"
     "time"
 	"flag"
@@ -12,8 +13,14 @@ const face string = "./demonkakka.txt"
 const version string = "1.0.0"
 
 func kakka_face() {
-	file, err := os.Open(face)
+	_, err := exec.Command("clear").Output()
+	if err != nil {
+		fmt.Println("Error: ", err)
 
+		return
+	}
+
+	file, err := os.Open(face)
 	if err != nil {
 		fmt.Println("Error: ", err)
 
